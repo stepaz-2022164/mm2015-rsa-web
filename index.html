@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MM2015 · Criptografía RSA</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="rsa.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><h1>Criptografía RSA</h1><p>MM2015 · ASCII imprimible · dos caracteres por bloque</p></header>
+    <section class="card">
+      <h2>Parámetros RSA</h2>
+      <div class="grid three"><label>p (primo)<input id="p" inputmode="numeric" value="367"></label><label>q (primo)<input id="q" inputmode="numeric" value="373"></label><label>e<input id="e" inputmode="numeric" value="17"></label></div>
+      <p class="hint">Se requiere 126126 &lt; p × q &lt; 1000000 y MCD(e, φ) = 1.</p>
+    </section>
+    <div class="grid two">
+      <section class="card">
+        <h2>Encriptar</h2>
+        <label>Mensaje M<textarea id="message" rows="4" spellcheck="false">RSA</textarea></label>
+        <p class="hint">ASCII 032 a 126. Los espacios se conservan.</p>
+        <div class="actions"><button id="encrypt">Encriptar</button><button id="example" class="secondary">Cargar ejemplo</button><button id="transfer" class="secondary" disabled>Pasar a desencriptar</button></div>
+        <div id="encrypt-error" class="error" role="alert" hidden></div>
+        <div id="encrypt-result" hidden><p id="encrypt-summary"></p><label>C<textarea id="cipher-output" rows="2" readonly></textarea></label><label>L<input id="length-output" readonly></label><div class="actions"><button id="copy-c" class="secondary">Copiar C</button><button id="copy-l" class="secondary">Copiar L</button></div><div id="encrypt-blocks"></div></div>
+      </section>
+      <section class="card" id="decrypt-panel">
+        <h2>Desencriptar</h2>
+        <label>C (seis dígitos por bloque)<textarea id="cipher-input" rows="4" spellcheck="false"></textarea></label>
+        <label>L (longitud original)<input id="length-input" inputmode="numeric"></label>
+        <div class="actions"><button id="decrypt">Desencriptar</button></div>
+        <div id="decrypt-error" class="error" role="alert" hidden></div>
+        <div id="decrypt-result" hidden><p id="decrypt-summary"></p><label>Mensaje M<textarea id="message-output" rows="3" readonly></textarea></label><p id="visible-spaces"></p><div id="decrypt-blocks"></div></div>
+      </section>
+    </div>
+    <footer>Los cálculos se realizan en este navegador. Proyecto educativo: estos parámetros RSA no protegen datos reales.</footer>
+  </main>
+</body>
+</html>
